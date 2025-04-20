@@ -1,0 +1,27 @@
+.FormRegistration{
+max-width: 500px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: rgb(233, 227, 227);
+color: #333131;
+padding: 10px;
+}
+
+
+.loadFoto{
+    background-color: black;
+    color:#fff
+}
+
+.FileImage{
+    display: none;
+    
+}
+
+.registr_btn{
+    display: block;
+    width: 160px;
+    padding: 5px;
+    margin: 10px auto;
+}

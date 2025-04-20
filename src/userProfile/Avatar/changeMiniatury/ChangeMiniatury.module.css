@@ -1,0 +1,51 @@
+.block_miniatury{
+height:500px ;
+width: 600px;
+border-radius: 10px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+.navigate_circle{
+    position: absolute;
+    border: 1px solid black;
+    width: 160px;
+    height: 160px;
+    transform-origin: 'right bottom';
+}
+.change_avatar{
+    border-radius: 50%;
+}
+ 
+.transform_circle{
+ width: 10px;
+ height: 10px;
+ display: block;
+ position: absolute;
+ background-color: #e0dbdb;
+
+}
+.container_miniatury{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    background-color: #fff;
+
+
+}
+.trans1{
+    left: -5px;
+    top: -5px;
+}
+.trans2{
+    right: -5px;
+    top: -5px;
+}
+.trans4{
+    left: -5px;
+    bottom: -5px;
+}
+.trans3{
+    right: -5px;
+    bottom: -5px;
+}

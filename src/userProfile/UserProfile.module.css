@@ -1,0 +1,22 @@
+
+.box_inline{
+  display: flex;
+  align-items: center;
+    
+}
+.inputFile{
+  background-color: black;
+  color: #fff;
+  padding: 5px;
+}
+.none{
+  display: none;
+}
+
+
+.userName{
+font-size: 30px;
+padding: 10px;
+}
+ 
+

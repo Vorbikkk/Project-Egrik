@@ -1,0 +1,62 @@
+.exercise_form {
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form_group {
+  margin-bottom: 15px;
+}
+
+.form_label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form_input,
+.form_textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Очень важно для правильной ширины */
+}
+
+.form_textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form_input_file {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form_error {
+  color: red;
+  margin-top: 5px;
+}
+
+.form_file_name {
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.form_button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form_button:hover {
+  background-color: #3e8e41;
+}
