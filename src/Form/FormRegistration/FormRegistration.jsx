@@ -4,7 +4,7 @@ import MyButton from '../../UI/MyButton/MyButton'
 import MyInput from '../../UI/MyInput/MyInput';
 import ValidationDataRegist from '../../HeaderComponents/ValidationDataRegist';
 import { useNavigate } from 'react-router-dom';
-import  {UserApi}  from '../../rtk/Service/UserService';
+import  {UserApi}  from '../../RTK/Service/UserService';
 
 const Registration = () => {
 

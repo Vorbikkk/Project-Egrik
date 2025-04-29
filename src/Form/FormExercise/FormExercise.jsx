@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import cl from './ExerciseForm.module.css'; // Импортируем CSS модуль и переименовываем импорт
+import cl from './FormExercise.module.css';
+import Exercise from '../../Exercise/Exercise';
 
 const ExerciseForm = ({ onSubmit }) => {
   const [exerciseName, setExerciseName] = useState('');
-  const [exerciseDescription, setExerciseDescription] = useState('');
+  const [exerciseDescription, setExerciseDescription] = useState('Описание упражнения');
   const [exerciseMedia, setExerciseMedia] = useState('');
   const [error, setError] = useState('');
 
@@ -30,8 +31,6 @@ const ExerciseForm = ({ onSubmit }) => {
     setExerciseMedia('');
   };
 
-  
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
 
@@ -42,7 +41,6 @@ const ExerciseForm = ({ onSubmit }) => {
         return;
       }
       setError('');
-
       setExerciseMedia(file.name);
     } else {
       setExerciseMedia('');
@@ -52,9 +50,11 @@ const ExerciseForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={cl.exercise_form}>
+      <h2 className={cl.form_title}>Добавить новое упражнение</h2>
+      
       <div className={cl.form_group}>
         <label htmlFor="exercise_name" className={cl.form_label}>
-          Имя упражнения:
+          Имя упражнения
         </label>
         <input
           type="text"
@@ -63,41 +63,50 @@ const ExerciseForm = ({ onSubmit }) => {
           onChange={(e) => setExerciseName(e.target.value)}
           required
           className={cl.form_input}
+          placeholder="Введите название упражнения"
         />
       </div>
 
       <div className={cl.form_group}>
         <label htmlFor="exercise_description" className={cl.form_label}>
-          Описание упражнения:
+          Описание упражнения
         </label>
         <textarea
           id="exercise_description"
           value={exerciseDescription}
           onChange={(e) => setExerciseDescription(e.target.value)}
           className={cl.form_textarea}
+          placeholder="Опишите технику выполнения"
         />
       </div>
+
+      <Exercise/>
 
       <div className={cl.form_group}>
         <label htmlFor="exercise_media" className={cl.form_label}>
-          Видео упражнения:
+          Видео упражнения
         </label>
-        <input
-          type="file"
-          id="exercise_media"
-          accept="video/*"
-          onChange={handleFileChange}
-          required
-          className={cl.form_input_file}
-        />
+        <div className={cl.file_upload_wrapper}>
+          <label htmlFor="exercise_media" className={cl.file_upload_label}>
+            <span className={cl.file_upload_text}>
+              {exerciseMedia ? exerciseMedia : 'Выберите видеофайл'}
+            </span>
+            <span className={cl.file_upload_button}>Обзор</span>
+          </label>
+          <input
+            type="file"
+            id="exercise_media"
+            accept="video/*"
+            onChange={handleFileChange}
+            required
+            className={cl.form_input_file}
+          />
+        </div>
         {error && <p className={cl.form_error}>{error}</p>}
-        {exerciseMedia && !error && (
-          <p className={cl.form_file_name}>Выбранный файл: {exerciseMedia}</p>
-        )}
       </div>
 
       <button type="submit" className={cl.form_button}>
-        Сохранить
+        Сохранить упражнение
       </button>
     </form>
   );

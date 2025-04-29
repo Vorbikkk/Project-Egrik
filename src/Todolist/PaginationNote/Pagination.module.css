@@ -1,0 +1,25 @@
+.container_pagination{
+ width: 500px;
+ margin: 10px auto;
+ display: flex;
+ justify-content: center;
+ position: absolute;
+ bottom: 10px;
+}
+
+.pagination_button {
+    width: 30px;
+    height: 35px;
+    border: 1px solid rgb(102, 21, 177);
+    border-radius: 5px;
+    background: #7f5dba;
+    color: #ffffff;
+    font-weight: 600;
+    margin:  5px;
+    cursor: pointer;
+  }
+  .active{
+    transform: scale(1.1);
+    background: #ae90e3;
+
+  }

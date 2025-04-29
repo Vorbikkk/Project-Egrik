@@ -1,6 +1,8 @@
 .header{
     min-height:100px;
     background-color: rgb(65, 65, 235);
+    display: flex;
+    justify-content: space-between;
     padding: 5px;
     color: #fff;
 }

@@ -6,7 +6,7 @@ import ModalDefault from '../../Modal/ModalDefault';
 const OptionsAvatar = ({coordinat,activeOptions,setActiveOptions,imageData,setImageData}) => {
 
 
-      const [active,setActive]=useState()
+      const [active,setActive]=useState(false)
      
     const handleImageChange = async (event) => {
         const file = event.target.files[0];

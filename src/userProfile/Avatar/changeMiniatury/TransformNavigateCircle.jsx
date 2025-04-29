@@ -17,7 +17,7 @@ function deformationCircle(checkRect, widthCircle, heightCircle, e) {
     return { x: newPosX, y: newPosY };
 }
 
-const TransformNavigateCircle = (e, setCircleSize, setStyleCircle, circleSize, dataTrans, checkRef, circleRef,setTest) => {
+const TransformNavigateCircle = (e, setCircleSize, setStyleCircle, circleSize, dataTrans, checkRef, circleRef ) => {
     e.stopPropagation();
 
     let widthCircle = circleRef.current.getBoundingClientRect().width
@@ -29,10 +29,9 @@ const TransformNavigateCircle = (e, setCircleSize, setStyleCircle, circleSize, d
     let nextState = widthCircle+1
 
 
-    let i=0 //убрать
 
     function MouseMove(e) {
-        const checkRect = circleRef.current.getBoundingClientRect();  // Get updated rect
+        const checkRect = circleRef.current.getBoundingClientRect();   
         const { x, y } = deformationCircle(checkRect, widthCircle, heightCircle, e);
 
         if (widthCircle < x) {
@@ -55,7 +54,6 @@ const TransformNavigateCircle = (e, setCircleSize, setStyleCircle, circleSize, d
             nextState++
         }
 
-         i++
 
         scale = nextState / initialState
 

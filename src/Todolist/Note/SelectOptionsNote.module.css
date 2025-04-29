@@ -1,0 +1,44 @@
+
+.container_select{
+
+    position: relative;
+}
+
+.blockOpenSelect {
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+.openSelect {
+    display: block;
+    transform: translateY(-5px);
+    font-size: 20px;
+}
+
+.blockOpenSelect:hover {
+    background-color: rgb(226, 230, 234);
+}
+
+.selectNote {
+    background-color: #fff;
+    width: 140px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    left: 15px;
+    top: 25px;
+
+
+}
+.option{
+    list-style: none;
+    padding: 5px;
+    display: flex;
+    width: 95%;
+}
+.option:hover{
+    background-color: rgb(245, 245, 246);
+    border-radius: 5px;
+
+}

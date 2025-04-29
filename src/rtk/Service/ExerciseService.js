@@ -6,7 +6,7 @@ export const ExerciseApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
     tagTypes: ['Exercise'],
     endpoints: (build) => ({
-        getExerciseы:build.query({
+        getExercise:build.query({
             query: () => ({
                 url: `/exerciseMark`,
               }),
@@ -24,4 +24,4 @@ export const ExerciseApi = createApi({
 
 })
 
-   export const {useCreateExerciseMutation,useGetExerciseыQuery}=ExerciseApi
+   export const {useCreateExerciseMutation,useGetExerciseQuery}=ExerciseApi

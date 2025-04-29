@@ -1,0 +1,9 @@
+.edit_icon {
+    color: #4b5563;  
+    transition: all 0.2s ease;
+  }
+  
+  .edit_icon:hover {
+    color: #2563eb;  
+    transform: translateY(-1px);
+  }

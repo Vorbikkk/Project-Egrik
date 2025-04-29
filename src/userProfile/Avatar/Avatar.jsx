@@ -4,7 +4,7 @@ import OptionsAvatar from './OptionsAvatar';
 import ModalDefault from '../../Modal/ModalDefault';
 import { useSelector } from 'react-redux';
 
-const Avatar = ({ url }) => {
+const Avatar = ( ) => {
     const miniaturyAvatar=useSelector((state)=>state.dataAvatar)
     const [changeFoto, setChangeFoto] = useState('none')
     const [coordinat, setCoordinat] = useState({})
@@ -27,9 +27,10 @@ const Avatar = ({ url }) => {
         }
 
     },[miniaturyAvatar,imageData])
+  
     
-
-
+  
+    
     const foto = () => {
         setChangeFoto('none')
     }
@@ -46,7 +47,7 @@ const Avatar = ({ url }) => {
 
     return (
         <div
-            onMouseOver={() => setChangeFoto('block')}
+            onMouseOver={(e) => setChangeFoto('block')}
             onMouseOut={() => foto()}
             className={cl.Avatar}
         >

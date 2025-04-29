@@ -1,0 +1,22 @@
+.Sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #fff;
+    padding: 10px;
+}
+.sidebar_link{
+    list-style: none;
+    text-decoration: none;
+    text-align: center;
+    color: rgb(19, 19, 19);
+}
+.sidebar_elem{
+    
+    padding: 10px;
+}
+.sidebar_elem:hover{
+    background-color: #e8e3e3;
+}

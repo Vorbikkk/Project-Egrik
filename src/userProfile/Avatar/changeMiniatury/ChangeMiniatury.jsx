@@ -1,8 +1,8 @@
-import React, {  useRef, useEffect,useCallback } from 'react';
+import React, {  useState,useRef, useEffect,useCallback } from 'react';
 import TransformNavigateCircle from './TransformNavigateCircle';
 import cl from './ChangeMiniatury.module.css'
 import { useDispatch,useSelector } from 'react-redux';
-import {changeSizeAvatar} from '../../../rtk/app/Slice/SliceAvatar'
+import {changeSizeAvatar} from '../../../RTK/app/Slice/SliceAvatar'
 import MyButton from '../../../UI/MyButton/MyButton';
 import {LoadAvatar} from './LoadAvatar';
 
@@ -11,15 +11,14 @@ const ChangeMiniatury = ({ imageSrc }) => {
 
     const checkRef = useRef();
     const dispatch=useDispatch()
-    const [ImageToPath,setImageToPath]=React.useState('')
-    const [styleCircle, setStyleCircle] = React.useState({ top: 0, left: 0 });
-    const [dataToChangeAvatar,setDataToChangeAvatar]=React.useState({})
+    const [ImageToPath,setImageToPath]=useState('')
+    const [styleCircle, setStyleCircle] = useState({ top: 0, left: 0 });
+    const [dataToChangeAvatar,setDataToChangeAvatar]=useState({})
     const avatarRef = useRef();
     const circleRef = useRef();
     const changeAvatarRef = useRef();
     const blockMiniaturyRef = useRef();
-    const [circleSize, setCircleSize] = React.useState({ width: 160, height: 160 });
-    const [test,setTest]=React.useState('')
+    const [circleSize, setCircleSize] = useState({ width: 160, height: 160 });
 
     useEffect(() => {
         if (checkRef.current && circleRef.current) {
@@ -48,7 +47,6 @@ const ChangeMiniatury = ({ imageSrc }) => {
         
         LoadAvatar(cord_x, cord_y,imageSrc,avatarRef,
             circleRef,changeAvatarRef,setDataToChangeAvatar,ImageToPath)
-        setTest(`${circleSize.width}`)
             
     },[circleSize])
 
@@ -65,7 +63,7 @@ const ChangeMiniatury = ({ imageSrc }) => {
         let shiftX = e.clientX - styleCircle.left;
         let shiftY = e.clientY - styleCircle.top;
     
-        
+          
         
         function MouseMove(e) {
             let newTop = e.clientY - shiftY;
@@ -115,7 +113,7 @@ const ChangeMiniatury = ({ imageSrc }) => {
     } 
     
     function dragnDrop(e,dataTrans){
-        TransformNavigateCircle(e, setCircleSize,setStyleCircle,circleSize,  dataTrans, checkRef,circleRef,setTest)
+        TransformNavigateCircle(e, setCircleSize,setStyleCircle,circleSize,  dataTrans, checkRef,circleRef )
         
     }
 
@@ -142,7 +140,6 @@ const ChangeMiniatury = ({ imageSrc }) => {
                 </canvas>
             </div>
             <MyButton onClick={()=>changeMiniaturyAvatar()}>сохранить данные</MyButton>
-            <p>{test}</p> 
         </div>
     );
 };
