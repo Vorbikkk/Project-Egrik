@@ -4,6 +4,7 @@ import MyButton from '../../../UI/MyButton/MyButton';
 import ModalDefault from '../../../Modal/ModalDefault';
 import Calendar from '../../../Calendar/Calendar'
 import { useUpdateNoteMutation } from '../../../RTK/Service/NoteService';
+import CalendarIcon from '../../../SVGIcons/CalendarIcon'
 
 const EditNoteForm = ( {note,setActiveEditModal}  ) => {
 
@@ -60,16 +61,19 @@ const EditNoteForm = ( {note,setActiveEditModal}  ) => {
       
       <div className={cl.form_group}>
         <label className={cl.input_label}>Дата завершения</label>
-        <input
+       <div className={cl.container_flex}>
+       <input
           value={date}
           onChange={(e) => setDate(e.target.value)}
           className={cl.date_input}
         />
-        <MyButton onClick={()=>setActiveCalendar(true)}>кал</MyButton>
+        
+          <CalendarIcon onClick={()=>setActiveCalendar(true)} />
+       </div>
       </div>
       
       <div className={cl.buttons_container}>
-        <button className={cl.cancel_button}  >
+        <button className={cl.cancel_button} onClick={()=>setActiveEditModal(false)} >
           Отмена
         </button>
         <button className={cl.save_button} onClick={()=>updateDataNote()}>

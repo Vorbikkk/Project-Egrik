@@ -1,0 +1,119 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 500px;
+    padding: 20px;
+  }
+  
+  .form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+    display: block;
+    position: relative;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+  }
+  
+  .input:focus {
+    border: 1px solid #4a90e2;
+    outline: none;
+  }
+  .togglePassword {
+    position: absolute;
+    right: 12px;
+    background: none;
+    font-size: 18px;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .togglePassword:hover {
+    color: #667eea;
+  }
+  
+  .inputError {
+    border-color: #e74c3c;
+  }
+  
+  .error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background-color: #357ab8;
+  }
+  
+  .buttonDisabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .link {
+    color: #4a90e2;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  .divider {
+    color: #ddd;
+    margin: 0 5px;
+  }

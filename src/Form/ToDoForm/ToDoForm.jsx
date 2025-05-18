@@ -4,6 +4,7 @@ import cl from './ToDoForm.module.css';
 import ModalDefault from '../../Modal/ModalDefault';
 import Calendar from '../../Calendar/Calendar';
 import { useCreateNoteMutation } from '../../RTK/Service/NoteService';
+import CalendarIcon from '../../SVGIcons/CalendarIcon';
 
 
 const ToDoForm = ({  notes, setActiveFormToDo }) => {
@@ -66,7 +67,7 @@ const ToDoForm = ({  notes, setActiveFormToDo }) => {
                 className={[cl.input, cl.input_calendar].join(' ')}
                 required
               />
-              <MyButton className={cl.activeCalendar} onClick={(e) => ActivatedCalendar(e)}>Кал</MyButton>
+              <CalendarIcon onClick={(e) => ActivatedCalendar(e)} />
             </div>
           </div>
         </div>

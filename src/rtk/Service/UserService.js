@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery, FetchArgs } from '@reduxjs/toolkit/query/rea
 
 export const UserApi = createApi({
     reducerPath: 'UserApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api/user' }),
     tagTypes: ['User'],
     endpoints: (build) => ({
         getUsers:build.query({
@@ -12,20 +12,35 @@ export const UserApi = createApi({
               }),
               providesTags: ['User'],
         }),
-        getUser:build.query({
-            query: () => ({
-                url: `/user`,
-              }),
-              providesTags: ['User'],
+     
+        getUserAuth:build.mutation({
+            query:(LoginData)=>({
+                url:'/login',
+                method:'POST',
+                body:LoginData,
+                credentials: 'include',
+            }),
+            invalidatesTags:['User']
         }),
         createUser: build.mutation({
             query: (user) => ({
-                url: '/api/user/regist',
+                url: '/regist',  // Убедитесь, что путь совпадает с серверным эндпоинтом
                 method: 'POST',
                 body: user,
+                credentials: 'include',  // Для отправки кук (если используется JWT в httpOnly)
+              
             }),
             invalidatesTags: ['User']
         }),
+        deleteUser: build.mutation({
+            query:(id)=>{
+                console.log(id)
+               return {url:`/${id}`,
+                metod:'DELETE',}
+
+            },
+            invalidatesTags:['User']
+        })
     })
 
 })

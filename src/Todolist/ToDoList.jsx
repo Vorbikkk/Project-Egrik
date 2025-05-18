@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import MyButton from '../../UI/MyButton/MyButton';
-import ModalDefault from '../../Modal/ModalDefault'
-import ListNotes from '../ListNotes/ListNotes'
-import Loading from '../../UI/Loading/Loading';
-import { useGetNoteQuery } from '../../RTK/Service/NoteService';
-import ToDoForm from './ToDoForm';
+import MyButton from '../UI/MyButton/MyButton';
+import ModalDefault from '../Modal/ModalDefault'
+import ListNotes from './ListNotes/ListNotes'
+import Loading from '../UI/Loading/Loading';
+import { useGetNoteQuery } from '../RTK/Service/NoteService';
+import ToDoForm from '../Form/ToDoForm/ToDoForm';
 
 const ToDoList = () => {
 

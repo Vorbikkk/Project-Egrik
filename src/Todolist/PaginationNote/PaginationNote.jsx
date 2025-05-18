@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import cl from './Pagination.module.css'
 
-const PaginationNote = ({ count,setNumberPagination }) => {
+const PaginationNote = ({ count,setNumberPagination,limit=5 }) => {
 
     const [countPages, setCountPages] = useState([])
     const [activePage,setActivePage]=useState(null)
 
+     console.log(limit)
 
     useEffect(() => {
         if(activePage===null){
-            console.log(activePage)
-            setNumberPagination(Math.ceil(count / 5))
-            setActivePage(Math.ceil(count / 5 - 1))
+            const numberPage=Math.ceil(count / limit)
+            setNumberPagination(Math.max(numberPage,1))
+            setActivePage(Math.ceil(count / limit - 1))
         }
         console.log('one')
         createPages()
@@ -19,7 +20,7 @@ const PaginationNote = ({ count,setNumberPagination }) => {
 
     function createPages() {
         let pages = []
-        let sumPages = count <= 5 ? 1 : Math.ceil(count / 5);
+        let sumPages = count <= limit ? 1 : Math.ceil(count / limit);
         for (let i = 0; i < sumPages; i++) {
             pages.push(i);
         }
@@ -33,7 +34,6 @@ const PaginationNote = ({ count,setNumberPagination }) => {
 
     function addBtnPages(page){
     
-        console.log(activePage)
         let classBtn= page === activePage ? [cl.pagination_button,cl.active] : [cl.pagination_button] 
 
         return (

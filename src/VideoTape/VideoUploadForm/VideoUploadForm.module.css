@@ -1,0 +1,133 @@
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  margin-bottom: 25px;
+  color: #333;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container_flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.container_flex > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 45%;
+}
+
+.container_flex video {
+  width: 50%;
+  height: auto;
+  max-height: 500px;
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 500;
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.input {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border-color: #5181b8;
+  outline: none;
+}
+
+.textarea {
+  padding: 12px 15px;
+  min-height: 120px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  line-height: 1.5;
+  transition: border 0.2s;
+}
+
+.textarea:focus {
+  border-color: #5181b8;
+  outline: none;
+}
+
+.fileInput {
+  display: none;
+}
+
+.submitButton {
+  padding: 14px;
+  background: #5181b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background: #3a6ea5;
+  transform: translateY(-1px);
+}
+
+/* Стили для элементов управления */
+.container_flex span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.container_flex p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .container_flex {
+    flex-direction: column;
+  }
+  
+  .container_flex > div,
+  .container_flex video {
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+.ApiTags{
+    width: 70%;
+    position: relative;
+}
+
+.AddTags{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.addedTag{
+    background-color: rgb(153, 85, 216);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+
+}
+
+.deleteForAddedTags{
+    display: block;
+    background: none;
+}
+
+.SearchTags{
+    display: flex;
+    align-items: center;
+}
+
+.inputSearchTags{
+    width: 90%;
+    border: 1px solid rgb(84, 83, 83);
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px ;
+    outline: none;
+  }
+
+ 

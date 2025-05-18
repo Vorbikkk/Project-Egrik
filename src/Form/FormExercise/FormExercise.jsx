@@ -1,55 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import cl from './FormExercise.module.css';
-import Exercise from '../../Exercise/Exercise';
+import Tags from '../../Exercise/Tags/Tags';
+import { useCreateExerciseMutation } from '../../RTK/Service/ExerciseService';
 
-const ExerciseForm = ({ onSubmit }) => {
+const ExerciseForm = ({ setActive }) => {
   const [exerciseName, setExerciseName] = useState('');
-  const [exerciseDescription, setExerciseDescription] = useState('Описание упражнения');
-  const [exerciseMedia, setExerciseMedia] = useState('');
+  const [exerciseDescription, setExerciseDescription] = useState('');
+  const [addedTags, setAddedTags] = useState([]);
+  const [videoFile, setVideoFile] = useState(null);
   const [error, setError] = useState('');
+  const [createExercise] = useCreateExerciseMutation();
+  const fileInputRef = useRef(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!exerciseMedia) {
+    if (!videoFile) {
       setError('Пожалуйста, загрузите видео.');
       return;
-    } else {
-      setError('');
     }
 
-    const formData = {
-      exercise_name: exerciseName,
-      exercise_description: exerciseDescription,
-      exercise_media: exerciseMedia,
-    };
+    const tagsId = addedTags.map(item => item.id);
 
-    onSubmit(formData);
+    // Создаем FormData и добавляем все данные
+    const formData = new FormData();
+    formData.append('exercise_name', exerciseName);
+    formData.append('exercise_description', exerciseDescription);
+    formData.append('exercise_mark', tagsId);
+    formData.append('exercise_media', videoFile);
 
-    setExerciseName('');
-    setExerciseDescription('Описание упражнения');
-    setExerciseMedia('');
+    try {
+      const response = await createExercise(formData).unwrap();
+      console.log('Упражнение создано:', response);
+      
+      // Сброс формы
+      setExerciseName('');
+      setExerciseDescription('');
+      setAddedTags([]);
+      setVideoFile(null);
+      setError('');
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      setActive(false);
+    } catch (err) {
+      console.error('Ошибка при создании упражнения:', err);
+      setError('Произошла ошибка при отправке данных');
+    }
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-
+     
     if (file) {
       if (!file.type.startsWith('video/')) {
         setError('Пожалуйста, загрузите видеофайл.');
-        setExerciseMedia('');
         return;
       }
+      
+      setVideoFile(file);
       setError('');
-      setExerciseMedia(file.name);
     } else {
-      setExerciseMedia('');
+      setVideoFile(null);
       setError('Пожалуйста, загрузите видео.');
     }
   };
 
+  const handleBrowseClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
-    <form onSubmit={handleSubmit} className={cl.exercise_form}>
+    <form className={cl.exercise_form} onSubmit={handleSubmit}   >
       <h2 className={cl.form_title}>Добавить новое упражнение</h2>
       
       <div className={cl.form_group}>
@@ -80,26 +100,29 @@ const ExerciseForm = ({ onSubmit }) => {
         />
       </div>
 
-      <Exercise/>
+      <Tags addedTags={addedTags} setAddedTags={setAddedTags} />
 
       <div className={cl.form_group}>
-        <label htmlFor="exercise_media" className={cl.form_label}>
-          Видео упражнения
-        </label>
         <div className={cl.file_upload_wrapper}>
-          <label htmlFor="exercise_media" className={cl.file_upload_label}>
-            <span className={cl.file_upload_text}>
-              {exerciseMedia ? exerciseMedia : 'Выберите видеофайл'}
-            </span>
-            <span className={cl.file_upload_button}>Обзор</span>
-          </label>
+          <span className={cl.file_upload_text}>
+            {videoFile ? videoFile.name : 'Файл не выбран'}
+          </span>
+          <button 
+            type="button" 
+            onClick={handleBrowseClick}
+            className={cl.file_upload_button}
+          >
+            Обзор
+          </button>
           <input
             type="file"
             id="exercise_media"
+            ref={fileInputRef}
             accept="video/*"
             onChange={handleFileChange}
             required
             className={cl.form_input_file}
+            style={{ display: 'none' }}
           />
         </div>
         {error && <p className={cl.form_error}>{error}</p>}

@@ -12,6 +12,7 @@ const Sidebar = () => {
         { path: '/profile', name: 'профиль' },
         { path: '/todolist', name: 'тудулист' },
         { path: '/exercise', name: 'упражнения' },
+        { path: '/video_tape', name: 'видео клипы' },
     ]
 
 

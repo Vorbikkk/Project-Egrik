@@ -1,21 +1,24 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore,combineReducers } from "@reduxjs/toolkit";
 import { UserApi } from "../Service/UserService";
 import { NoteApi } from "../Service/NoteService";
-import dataAvatarReducer from  './Slice/SliceAvatar'
+import { ExerciseApi } from "../Service/ExerciseService";
+import { ExerciseMarkApi } from "../Service/ExerciseMarkService";
+import { persistedReducer } from "./PersistConfig";
+import { VideoClipApi } from "../Service/VideoClipService";
+import {persistStore} from 'redux-persist'
  
 
 
-export const store=configureStore({
-    reducer: {
-      dataAvatar:dataAvatarReducer,
-        [UserApi.reducerPath]:UserApi.reducer,
-        [NoteApi.reducerPath]:NoteApi.reducer,
-      },
+ const store=configureStore({
+    reducer:persistedReducer,
       middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
-      .concat(UserApi.middleware,NoteApi.middleware)
+      .concat(UserApi.middleware,NoteApi.middleware,ExerciseApi.middleware,
+        ExerciseMarkApi.middleware,VideoClipApi.middleware)
 })
 
- 
+const persistor=persistStore(store)
+
+ export {store,persistor}
 
 

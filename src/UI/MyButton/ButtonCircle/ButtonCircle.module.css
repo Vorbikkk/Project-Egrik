@@ -1,0 +1,32 @@
+.circleButton {
+  position: relative;
+  width: 50px;
+  height: 20px;
+  border-radius: 15px;
+  background-color: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.circleButton.active {
+  background-color: #2196f3;
+}
+
+.circle {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.circleButton.active .circle {
+  transform: translateX(30px);
+}

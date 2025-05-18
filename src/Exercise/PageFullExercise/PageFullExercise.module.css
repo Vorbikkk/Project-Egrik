@@ -1,0 +1,134 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 15px;
+}
+
+.title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.difficultyTag {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.marksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.markTag {
+    padding: 4px 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+.mediaContainer {
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mediaPlaceholder {
+    position: relative;
+    cursor: pointer;
+    background-color: #000;
+    height: 450px;
+}
+
+.previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.mediaPlaceholder:hover .previewImage {
+    opacity: 0.9;
+}
+
+.playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.playButton svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.mediaPlaceholder:hover .playButton {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.videoPlayer {
+    width: 100%;
+    height: 450px;
+    background-color: #000;
+}
+
+.descriptionSection {
+    margin-top: 20px;
+}
+
+.descriptionToggle {
+    background: none;
+    border: none;
+    color: #3498db;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.descriptionToggle:hover {
+    background-color: #f0f8ff;
+}
+
+.descriptionContent {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    line-height: 1.6;
+}

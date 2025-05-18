@@ -9,12 +9,15 @@ const MyInput = (props) => {
       
        if(className){
           classDefault.push(className)
-          console.log(className)
        }
      
 
     return (
-        <input className={classDefault.join(' ')} {...remainder} />
+        <input
+        placeholder='введите название...'
+        type='text'
+         className={classDefault.join(' ')} 
+         {...remainder} />
     );
 };
 

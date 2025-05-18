@@ -1,27 +1,162 @@
-.FormRegistration{
-max-width: 500px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-background-color: rgb(233, 227, 227);
-color: #333131;
-padding: 10px;
-}
+/* FormRegistration.module.css */
 
-
-.loadFoto{
-    background-color: black;
-    color:#fff
-}
-
-.FileImage{
-    display: none;
-    
-}
-
-.registr_btn{
+.formContainer {
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .formContainer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+  }
+  
+  .formTitle {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-weight: 700;
+    position: relative;
+  }
+  
+  .formTitle:after {
+    content: '';
     display: block;
-    width: 160px;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+  
+  .formGroup {
+    margin-bottom: 24px;
+    position: relative;
+  }
+  
+  .formLabel {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  .formInput {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+    color: #1a202c;
+  }
+  
+  .formInput:focus {
+    border-color: #667eea;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    outline: none;
+  }
+  
+  .formInput:hover {
+    border-color: #c3dafe;
+  }
+  
+  .passwordContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .passwordInput {
+    padding-right: 50px;
+  }
+  
+  .togglePassword {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
     padding: 5px;
-    margin: 10px auto;
-}
+    transition: color 0.3s ease;
+  }
+  
+  .togglePassword:hover {
+    color: #667eea;
+  }
+  
+  .errorMessage {
+    color: #e53e3e;
+    font-size: 13px;
+    margin-top: 8px;
+    padding-left: 5px;
+    animation: shake 0.5s ease;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  
+  .submitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+  
+  .submitButton:active {
+    transform: translateY(0);
+  }
+  
+  .additionalLinks {
+    text-align: center;
+    margin-top: 24px;
+    color: #718096;
+    font-size: 14px;
+  }
+  
+  .additionalLinks a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .additionalLinks a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+  }
+  
+  /* Добавьте этот класс к вашему основному div */
+  .registrationPage {
+    background-color: #f7fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
