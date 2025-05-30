@@ -1,0 +1,14 @@
+.comparisonLine {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.comparisonLine:hover {
+  opacity: 1;
+  stroke-width: 3px;
+}
+
+.lineLabel {
+  font-size: 12px;
+  font-weight: 500;
+}

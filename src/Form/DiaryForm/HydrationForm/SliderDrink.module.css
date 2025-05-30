@@ -1,0 +1,48 @@
+.container_drink{
+  display: flex;
+  width: 125px;
+  margin: 0 auto;
+  align-items: center;
+ }
+.arrow{
+  font-size: 20px;
+  color: #e6e9ea;
+  background-color: rgb(17, 119, 208,.9);
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 800;
+}
+.arrow:hover{
+   background-color: rgb(17, 119, 208);
+}
+
+.drinkGrid {
+  width: 70px;
+  height: 80px;
+  overflow: hidden;
+  gap: 0.8rem;
+  margin:0 auto;
+}
+
+.drinkButton {
+  display: block;
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(224, 242, 254, 0.5);
+  border: 1px solid #bae6fd;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* .drinkButton:hover {
+  background: rgba(186, 230, 253, 0.5);
+  transform: translateY(-2px);
+} */
+
+/* .drinkButton.active {
+  background: rgba(125, 211, 252, 0.5);
+  border-color: #7dd3fc;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+} */

@@ -9,16 +9,7 @@ import Authentificate from '../Form/Authentificate/Authentificate';
 
 const HeadersRouter = () => {
     
-  const user= {
-      userName: "johndoe42",
-      lastName: "Doe",
-      firstName: "John",
-      birthDate: "1990-05-15",
-      email: "john.doe@example.com",
-      city: "New York",
-      country: "USA",
-      role: "user"
-    } 
+ 
  
     
     
@@ -26,7 +17,7 @@ const HeadersRouter = () => {
           <Routes>
             <Route path='/' element={<Header/>}>
               <Route path='regist' element={<Registration/>} />
-              <Route path='edit_userProfile' element={<EditUserProfile user={user}/>}  />
+              <Route path='edit_userProfile' element={<EditUserProfile />}  />
               <Route path='login' element={<Authentificate />}  />
               <Route path='/*' element={<SidebarRouters/>}  />
             </Route>

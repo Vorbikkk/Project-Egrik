@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import cl from './EditUserProfile.module.css';
+import { useSelector } from 'react-redux';
+import { giveUser } from '../../RTK/app/Slice/SliceUser';
 
-const EditUserProfile = ({ user }) => {
+const EditUserProfile = () => {
+
+  const user=useSelector(giveUser)
   const [formData, setFormData] = useState({
     userName: user.userName || '',
     lastName: user.lastName || '',

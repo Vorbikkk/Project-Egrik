@@ -9,7 +9,6 @@ import Loading from './UI/Loading/Loading';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={Loading} persistor={persistor}>
         <BrowserRouter>
@@ -17,7 +16,6 @@ root.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
 );
 
 

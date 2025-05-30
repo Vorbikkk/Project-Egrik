@@ -1,0 +1,13 @@
+.SliderDiary{
+    margin: 0 auto;
+    overflow: hidden;
+   
+    max-width: 800px;
+    display: flex; 
+}
+.arrowRight{
+   transform: rotate(180deg);
+}
+.btn_center{
+    margin: auto;
+}

@@ -1,66 +1,59 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect,useCallback } from 'react';
 import SpeakerIcon from '../IsonsClip/Speakericon';
 import cl from './Sound.module.css'
+import Toddler from '../../UIVideo/Toddler';
 
-const Sound = () => {
+const Sound = ({setVolume}) => {
     const [isActive, setIsActive] = useState(true);
-    const [circlePosition, setCirclePosition] = useState({ top: '20%' });
-    const [gradientPosition, setGradientPosition] = useState('20%');
-    const circleRef = useRef();
-    const lineDinamicRef = useRef();
+    const [activeDinamic,setActiveDinamic]=useState(false)
+    const [gradientPosition, setGradientPosition] = useState('100%');
+    const SoundRef=useRef()
+   
+     
+    
+    useEffect(()=>{
+        let countVolume=!isActive ? 0 : (1/100)*parseFloat(gradientPosition)
+       setVolume(countVolume)
+       console.log(gradientPosition)
+    },[gradientPosition,isActive])
 
-    useEffect(() => {
-        // Синхронизируем позицию градиента с позицией кружка
-        setGradientPosition(circlePosition.top);
-    }, [circlePosition]);
-
-    const navigateCursor = (e) => {
-        const circleRect = circleRef.current.getBoundingClientRect();
-        const lineRect = lineDinamicRef.current.getBoundingClientRect();
-        const initialY = e.clientY - circleRect.top;
-
-        function mouseMove(e) {
-            let newTop = e.clientY - initialY - lineRect.top;
-            
-            // Ограничиваем движение в пределах линии
-            newTop = Math.max(0, Math.min(newTop, lineRect.height - circleRect.height));
-            
-            const newPosition = `${(newTop / lineRect.height) * 100}%`;
-            setCirclePosition({ top: newPosition });
-            setGradientPosition(newPosition);
+  
+   const openDinamic = () => {
+    setActiveDinamic(true);
+    
+    const handleMouseOut = (e) => {
+        if (!SoundRef.current.contains(e.relatedTarget)) {
+            setActiveDinamic(false);
         }
-
-        function mouseUp() {
-            document.removeEventListener('mousemove', mouseMove);
-            document.removeEventListener('mouseup', mouseUp);
-        }
-
-        document.addEventListener('mousemove', mouseMove);
-        document.addEventListener('mouseup', mouseUp);
-        e.preventDefault();
     };
 
+    const element = SoundRef.current;
+    element.addEventListener('mouseout', handleMouseOut);
+
+    return () => {
+        element.removeEventListener('mouseout', handleMouseOut);
+    };
+};
+
+
     return (
-        <div>
-            <button className={cl.btn_sound} onClick={() => setIsActive(prev => !prev)}>
+        <div 
+         className={cl.Sound} 
+         ref={SoundRef}
+        >
+            <button 
+            className={cl.btn_sound}
+             onMouseOver={()=>openDinamic()}
+            onClick={() => setIsActive(prev => !prev)}>
                 <SpeakerIcon isActive={isActive} />
             </button>
-            <div className={cl.dinamic_volume}>
-                <div 
-                    ref={lineDinamicRef} 
-                    className={cl.lineDinamic}
-                    style={{
-                        background: `linear-gradient(to top, #1E90FF ${gradientPosition}, #D3D3D3 ${gradientPosition})`
-                    }}
-                >
-                    <div 
-                        style={{ top: circlePosition.top }} 
-                        ref={circleRef} 
-                        onMouseDown={navigateCursor}  
-                        className={cl.circle}
-                    />
-                </div>
-            </div>
+            {activeDinamic &&
+               <Toddler 
+               gradientPosition={gradientPosition} 
+               setGradientPosition={setGradientPosition}
+               isActive={isActive}
+               setIsActive={setIsActive} />
+            }
         </div>
     );
 };

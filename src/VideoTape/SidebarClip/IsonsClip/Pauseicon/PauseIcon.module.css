@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  height: 370px;
+  width: 100%;
+  gap: 20px;
+}
+
+
+.blockPause{
+   background-color: rgb(0, 0, 0,.6);
+   display: flex;
+  align-items: center;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+.triangle {
+ 
+  border-left: 27px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 18px solid transparent;
+  margin: 0  auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.triangle:hover {
+  transform: scale(1.1);
+}
+
+/* Две чёрточки (пауза) */
+.pauseBars {
+  margin: 0  auto;
+  display: flex;
+  gap: 10px;
+}
+
+.bar {
+  width: 10px;
+  height: 40px;
+  background: white;
+  border-radius: 2px;
+}

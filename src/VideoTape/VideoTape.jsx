@@ -3,7 +3,7 @@ import VideoUploadForm from './VideoUploadForm/VideoUploadForm';
 import cl from './VideoTape.module.css'
 import MyButton from '../UI/MyButton/MyButton';
 import Loading from '../UI/Loading/Loading'
-import { useGetAllVideoClipsQuery } from '../RTK/Service/VideoClipService';
+import { useGetAllVideoClipsQuery } from '../RTK/Service/VideoClipApi/VideoClipService';
 import VideoClip from './VideoClip/VideoClip';
 
 const VideoTape = () => {
@@ -16,12 +16,12 @@ const VideoTape = () => {
     return (
         <div className={cl.VideoTape}>
             {isLoading && <Loading />}
+                 {!activeForm ? <MyButton onClick={()=>setActiveForm(true)}>Опубликовать</MyButton> : <VideoUploadForm />}
              <div>
                 {data && data.rows.map(clip=>
                     <VideoClip clip={clip} />
                 )}
              </div>
-            {!activeForm ? <MyButton onClick={()=>setActiveForm(true)}>Опубликовать</MyButton> : <VideoUploadForm />}
         </div>
     );
 };

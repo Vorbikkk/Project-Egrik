@@ -1,0 +1,21 @@
+.box_input{
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+}
+.inputRange {
+  margin: 0 auto;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #ddd;
+  outline: none;
+}
+
+.inputRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ccd0d4;
+  border-radius: 50%;
+  cursor: pointer;
+}

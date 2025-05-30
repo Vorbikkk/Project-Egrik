@@ -1,0 +1,75 @@
+.tooltipContainer {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.tooltip {
+  position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  width: 200px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
+  transform: translateY(-100%); /* Поднимаем над курсором */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.indicatorName {
+  font-weight: 500;
+  color: #444;
+}
+
+.indicatorValue {
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.date {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailLabel {
+  color: #666;
+}
+
+.detailValue {
+  font-weight: 500;
+  color: #222;
+}
+
+.arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid white;
+}

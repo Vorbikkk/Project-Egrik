@@ -1,0 +1,166 @@
+.form {
+   width: 600px;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.title {
+  text-align: center;
+  color: #0369a1;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.formGroup {
+  margin-bottom: 10px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  font-size: 1.05rem;
+}
+
+.select, .timeInput {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.select:focus, .timeInput:focus {
+  outline: none;
+  border-color: #7dd3fc;
+  box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.3);
+}
+ 
+
+.drinkEmoji {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.drinkName {
+  font-size: 0.8rem;
+}
+
+.amountValue {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  font-weight: 700;
+  color: #0369a1;
+}
+
+.amountControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.amountButton {
+  padding: 0.5rem 1rem;
+  background: #bae6fd;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  color: #0369a1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.amountButton:hover {
+  background: #7dd3fc;
+  transform: scale(1.05);
+}
+
+.waterBottle {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #7dd3fc;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.waterFill {
+  width: 100%;
+  background: linear-gradient(to top, #38bdf8, #0ea5e9);
+  transition: height 0.5s ease;
+}
+
+.waterAmount {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  color: #0c4a6e;
+  padding: 0.3rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.rangeSlider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #e0f2fe, #38bdf8);
+  outline: none;
+  -webkit-appearance: none;
+  margin-top: 1rem;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0284c7;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.rangeSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #0369a1;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to right, #0ea5e9, #0284c7);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:hover {
+  background: linear-gradient(to right, #0284c7, #0369a1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.controls {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.LineGraph {
+  display: flex;
+  align-items: center;
+}
+
+.btn_arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.btn_arrow.left {
+  transform: rotate(180deg);
+}
+
+.mainLine {
+  stroke: #3F8AE0;
+}
+
+.compareLine {
+  stroke: #E64A19;
+}
+.miniChart {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.miniChart:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

@@ -7,7 +7,7 @@ import Tags from '../../Exercise/Tags/Tags';
 import { useSelector } from 'react-redux';
 import { giveUser } from '../../RTK/app/Slice/SliceUser';
 import {useNavigate} from 'react-router-dom'
-import { useCreateVideoClipMutation,useGetAllVideoClipsMutation } from '../../RTK/Service/VideoClipService';
+import { useCreateVideoClipMutation,useGetAllVideoClipsMutation } from '../../RTK/Service/VideoClipApi/VideoClipService';
 
 const VideoUploadForm = () => {
   const [title, setTitle] = useState('');

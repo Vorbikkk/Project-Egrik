@@ -1,0 +1,13 @@
+.indicators{
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: 0 auto;
+}
+.indicators > li{
+    list-style: none;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 160px;
+    text-align: center;
+}

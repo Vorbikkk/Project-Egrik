@@ -14,12 +14,17 @@ function App() {
   const [activeAuth, setActiveAuth] = useState(true)
   const [boolAuth, setBoolAuth] = useState()
   const dispatch=useDispatch()
-  const user=useSelector(giveUser)
 
 
   useEffect(() => {
     checkAuth()
   }, [])
+
+    useEffect(() => {
+  if (boolAuth && !boolAuth.auth && boolAuth.user) {
+    dispatch(installUser(boolAuth.user));
+  }
+}, [boolAuth]);
 
 
   const checkAuth = async () => {
@@ -40,8 +45,6 @@ function App() {
     </ModalDefault>
   }
   else{
-
-    dispatch(installUser(boolAuth?.user))
      return (
     <div className={cl.App}>
       <HeadersRouter />

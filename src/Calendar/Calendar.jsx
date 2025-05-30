@@ -17,11 +17,11 @@ import cl from './Calendar.module.css';
 import TimePicker from './TimePicker/TimePicker';
 import MyButton from '../UI/MyButton/MyButton';
 
-const Calendar = ({ setEndData }) => {
+const Calendar = ({ setEndData=null, objEntry=null }) => {
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(null);
     const [showTimePicker, setShowTimePicker] = useState(false);
-    const [sendData,setSendData]=useState()
+    const [sendData, setSendData] = useState()
 
     // Генерация дней календаря
     const monthDays = useMemo(() => {
@@ -43,13 +43,13 @@ const Calendar = ({ setEndData }) => {
             <div className={cl.timePicker}>
                 <h3>Выберите время окончания:</h3>
                 <TimePicker
-                    currentDate={format(selectedDate,'yyyy-MM-dd')}
+                    currentDate={format(selectedDate, 'yyyy-MM-dd')}
                     sendData={sendData}
                     setSendData={setSendData}
                     setEndData={setEndData}
                 />
                 <div className={cl.container_btn}>
-                    <MyButton 
+                    <MyButton
                         className={cl.confirmButton}
                         onClick={() => setShowTimePicker(false)}
                     >
@@ -57,11 +57,36 @@ const Calendar = ({ setEndData }) => {
                     </MyButton>
                     <MyButton
                         className={cl.confirmButton}
-                        onClick={()=>setSendData(true)}
+                        onClick={() => setSendData(true)}
                     >
                         Установить дату окончания
                     </MyButton>
                 </div>
+            </div>
+        );
+    }
+
+
+    function showDays(day) {
+        const isCurrent = selectedDate && isSameDay(day, selectedDate);
+        const isOtherMonth = !isSameMonth(day, currentMonth);
+        let defaultOnClick=handleDateSelect
+        let classDefault= `${cl.day} ${isOtherMonth ? cl.otherMonth : ''} ${isCurrent ? cl.selected : ''}`
+      
+        if(objEntry){
+            defaultOnClick=objEntry.onClick
+        } 
+        if(objEntry && 5===5){
+            classDefault=objEntry.classDay
+        }
+    
+        return (
+            <div
+                key={day.toString()}
+                className={classDefault}
+                onClick={() => defaultOnClick(day)}
+            >
+                {format(day, 'd')}
             </div>
         );
     }
@@ -84,20 +109,7 @@ const Calendar = ({ setEndData }) => {
                         <div key={day} className={cl.dayHeader}>{day}</div>
                     ))}
 
-                    {monthDays.map(day => {
-                        const isCurrent = selectedDate && isSameDay(day, selectedDate);
-                        const isOtherMonth = !isSameMonth(day, currentMonth);
-
-                        return (
-                            <div
-                                key={day.toString()}
-                                className={`${cl.day} ${isOtherMonth ? cl.otherMonth : ''} ${isCurrent ? cl.selected : ''}`}
-                                onClick={() => handleDateSelect(day)}
-                            >
-                                {format(day, 'd')}
-                            </div>
-                        );
-                    })}
+                    {monthDays.map(day => showDays(day))}
                 </div>
             </div>
         </div>

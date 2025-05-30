@@ -1,0 +1,49 @@
+.miniChartContainer {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.miniChartContainer:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.miniChart {
+  display: block;
+}
+
+.chartLine {
+  transition: stroke-width 0.2s ease;
+}
+
+.chartLine:hover {
+  stroke-width: 3px;
+}
+
+.monthLabel {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.monthLabel:hover {
+  fill: #4e79a7 !important;
+  font-weight: bold;
+}
+
+.monthArea {
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.monthArea:hover {
+  opacity: 0.1;
+}
