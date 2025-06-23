@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import cl from './MyInput.module.css'
 
 const MyInput = (props) => {
@@ -10,10 +10,11 @@ const MyInput = (props) => {
        if(className){
           classDefault.push(className)
        }
+      
      
 
     return (
-        <input
+        <input 
         placeholder='введите название...'
         type='text'
          className={classDefault.join(' ')} 

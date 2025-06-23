@@ -1,0 +1,7 @@
+.ToDoList{
+    width: 100%;
+    position: fixed;
+    top: 12%;
+    bottom: 0;
+    display: flex;
+}

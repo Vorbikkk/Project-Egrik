@@ -1,0 +1,36 @@
+/* Collapsible Section */
+.sectionContainer {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sectionHeader:hover {
+  background-color: #ebebeb;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+}
+
+.title {
+  margin: 0;
+  font-size: 1em;
+  flex-grow: 1;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 0.9em;
+}
+
+

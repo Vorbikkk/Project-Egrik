@@ -1,0 +1,112 @@
+.filterContainer {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 10px;
+}
+
+.filterToggle {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+}
+
+.filterToggle:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    transition: transform 0.2s ease;
+}
+
+.arrowRight {
+    border-left: 5px solid #555;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.arrowDown {
+    border-top: 5px solid #555;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    transform: translateY(2px);
+}
+
+.filterDropdown {
+    margin-top: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+    min-width: 250px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filterSection {
+    margin-bottom: 15px;
+}
+
+.filterSection label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+.filterButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.applyButton {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.applyButton:hover {
+    background-color: #45a049;
+}
+
+.resetButton {
+    padding: 6px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.resetButton:hover {
+    background-color: #d32f2f;
+}

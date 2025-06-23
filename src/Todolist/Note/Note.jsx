@@ -1,46 +1,88 @@
-import React, { useEffect, useState } from 'react';
+import React,{useState,useEffect} from 'react';
 import cl from './Note.module.css';
-import DeleteIcon from './Icons/DeleteIcon';
 import ModalDefault from '../../Modal/ModalDefault';
-import WindowClarify from './WindowClarify';
 import SelectOptionsNote from './SelectOptionsNote';
+import { useUpdateNoteMutation } from '../../RTK/Service/NoteService';
+import NotificationNote from '../../UI/Notifications/NotificationNote/NotificationNote';
 
-const Note = ({ props }) => {
-
-  const [selectBtn, setSelectBtn] = useState('')
+const Note = ({ props, setNote,styles,
+              selectNotes,CallNotification,
+              noteNotificate,index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [active, setActive] = useState(false)
-  const { id, note_name, note_description, } = props
+  const [completed,setCompleted]=useState(false)
+  const { id, note_name,note_priority,note_is_completed,...remainderNote } = props;
+  
 
+  const handleNoteClick = (e) => {
+    if(e.shiftKey){
+      selectNotes(index)
+    }
+    setNote(props);
+  };
 
-  function CallWindowClarify(str) {
-    setActive(true)
-    setSelectBtn(str)
-  }
+  useEffect(()=>{
+
+    
+    if(noteNotificate?.id===id){
+     console.log(props)
+     setCompleted(true)
+   }
+   else{
+    setCompleted(false)
+   }
+
+  },[noteNotificate])
+
 
 
   return (
-    <div className={cl.note}>
-      <div >
-        <h3 className={cl.noteTitle}> {note_name}</h3>
-        <p className={cl.noteDesc}>
-          {note_description.slice(0, 100)}
-          {note_description.length > 100 &&
-            <span onClick={() => setIsModalOpen(true)} className={cl.FullNoteInformation}>
-              показать полностью...
-            </span>}
-        </p>
+    <div 
+      className={`${cl.note}  `}
+      style={{display:(completed ? 'none' : 'flex') }}
+      // style={completed ? {...cl.selected} : {border:styles?.border}} по желанию 
+      onClick={(e)=>handleNoteClick(e)}
+    >
+      {/* SVG индикатор выбора */}
+      <div className={cl.checkbox} onClick={(e)=>{
+        CallNotification(props,'задача выполнена')
+        }}>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect 
+            x="1" y="1" 
+            width="18" height="18" 
+            rx="3" 
+            stroke={completed ? '#4CAF50' : `${styles?.stroke || '#BDBDBD'}`} 
+            strokeWidth="2" 
+            fill={completed ? '#4CAF50' : 'white'}
+          />
+          {completed && (
+            <path 
+              d="M5 10L9 14L15 6" 
+              stroke="white" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          )}
+        </svg>
       </div>
-      <div className={cl.container_btn}>
+
+      <div className={cl.content}>
+        <h3 className={cl.title}>{note_name}</h3>
+      </div>
+      <div>{styles?.rank}</div>
+
+      <div className={cl.options}>
         <SelectOptionsNote
-          CallWindowClarify={CallWindowClarify}
           setIsModalOpen={setIsModalOpen}
           isModalOpen={isModalOpen}
-          note={props} />
+          note={props}
+        />
       </div>
-      <ModalDefault active={active} setActive={setActive}>
-        <WindowClarify id={id} answer={selectBtn} setActive={setActive} />
-      </ModalDefault>
+      <div className={cl.container_notifications}>
+        
+      </div>
+
     </div>
   );
 };

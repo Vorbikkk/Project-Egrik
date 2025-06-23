@@ -7,6 +7,7 @@ import { persistedReducer } from "./PersistConfig";
 import { VideoClipApi } from "../Service/VideoClipApi/VideoClipService";
 import {persistStore} from 'redux-persist'
 import { LikeClipApi } from "../Service/VideoClipApi/LikeClipApi";
+import { NoteMarkApi } from "../Service/NoteMarkApi/NoteMarkApi";
  
 
 
@@ -15,11 +16,10 @@ import { LikeClipApi } from "../Service/VideoClipApi/LikeClipApi";
       middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
       .concat(UserApi.middleware,NoteApi.middleware,ExerciseApi.middleware,
-        ExerciseMarkApi.middleware,VideoClipApi.middleware,LikeClipApi.middleware)
+        ExerciseMarkApi.middleware,VideoClipApi.middleware,LikeClipApi.middleware,NoteMarkApi.middleware)
 })
 
-const persistor=persistStore(store)
 
- export {store,persistor}
+ export {store}
 
 

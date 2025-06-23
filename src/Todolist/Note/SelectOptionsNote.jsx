@@ -1,18 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import cl from './SelectOptionsNote.module.css';
 import ModalDefault from '../../Modal/ModalDefault';
-import WindowNoteInformation from './WindowNoteInformation';
-import DeleteIcon from './Icons/DeleteIcon';
-import EditIcon from './Icons/EditIcon';
 import EditNoteForm from './EditNote/EditNote';
+import { useUpdateNoteMutation } from '../../RTK/Service/NoteService';
+import DeleteIcon from './Icons/DeleteIcon'
+import EditIcon from './Icons/EditIcon'
+import PinIcon from  './Icons/PinIcon/PinIcon'
 
-const SelectOptionsNote = (props) => {
+const SelectOptionsNote = ({ note, setIsModalOpen, isModalOpen }) => {
     const [isSelectOpen, setIsSelectOpen] = useState(false);
-    const [activeEditModal,setActiveEditModal]=useState(false)
-
-    const { note ,setIsModalOpen,isModalOpen,CallWindowClarify}=props
+    const [activeEditModal, setActiveEditModal] = useState(false);
+    const [updateNote] = useUpdateNoteMutation();
     const selectRef = useRef(null);
-
+    const [stylePos, setStylePos] = useState({});
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -25,58 +25,78 @@ const SelectOptionsNote = (props) => {
             document.addEventListener('click', handleClickOutside);
         }
 
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
+        return () => document.removeEventListener('click', handleClickOutside);
     }, [isSelectOpen]);
 
+    const handleUpdateNote = async (updates) => {
+      
+
+        await updateNote(({ id: note.id, ...updates  }))
+        .then(res=>console.log(res))
+        setIsSelectOpen(false);
+    };
+
     const toggleSelect = (e) => {
-        e.stopPropagation();  
+        e.stopPropagation();
         setIsSelectOpen(prev => !prev);
+        setStylePos({
+            left: e.clientX - 150 + 'px',
+            top: e.clientY + 'px'
+        });
     };
 
     return (
         <div className={cl.container_select} ref={selectRef}>
-            <div 
-                className={cl.blockOpenSelect} 
+            <div
+                className={cl.blockOpenSelect}
                 onClick={toggleSelect}
                 aria-expanded={isSelectOpen}
                 aria-haspopup="true"
             >
                 <span className={cl.openSelect}>...</span>
             </div>
-            
+
             {isSelectOpen && (
-                <ul className={cl.selectNote}>
+                <ul
+                    onClick={(e) => e.stopPropagation()}
+                    style={stylePos}
+                    className={cl.selectNote}
+                >
+                    <p>Приоритет</p>
+                    <li className={cl.rankNotes}>
+                        {[4, 3, 2, 1].map((priority) => (
+                            <span 
+                                key={priority} 
+                                onClick={() => handleUpdateNote({ note_priority: priority, })}
+                            >
+                                {['⚪','🔵','🟡', '🟠'][priority - 1]}
+                            </span>
+                        ))}
+                    </li>
+                    <li
+                        className={cl.option}
+                        onClick={() => handleUpdateNote({ note_pin: !note.note_pin })}
+                    >
+                        {!note.note_pin ? 'закрепить' : 'открепить'} <PinIcon active={note.note_pin} />
+                    </li>
                     <li 
                         className={cl.option} 
-                        onClick={() => {
-                            setIsModalOpen(true);
-                            setIsSelectOpen(false);
-                        }}
+                        onClick={() => setActiveEditModal(true)}
                     >
-                        подробнее
+                        Редактировать <EditIcon />
                     </li>
-                    <li 
-                    className={cl.option} 
-                    onClick={() => CallWindowClarify('delete')}
-                    style={{color:'red'}}>
-                    удалить
-                    <DeleteIcon  />
-                    </li>
-                    <li  className={cl.option} onClick={()=>setActiveEditModal(true)} >
-                      редактирвоать  <EditIcon />
+                    <li
+                        className={cl.option}
+                        style={{ color: 'red' }}
+                    >
+                        Удалить <DeleteIcon />
                     </li>
                 </ul>
             )}
-            
-            <ModalDefault active={isModalOpen} setActive={setIsModalOpen}>
-                <WindowNoteInformation note={note} />
-            </ModalDefault>
-            <ModalDefault active={activeEditModal} setActive={setActiveEditModal}>
-                <EditNoteForm note={note} setActiveEditModal={setActiveEditModal}/>
-            </ModalDefault>
 
+            <ModalDefault active={activeEditModal} setActive={setActiveEditModal}>
+                <EditNoteForm note={note} setActiveEditModal={setActiveEditModal} />
+            </ModalDefault>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import Header from '../HeaderComponents/Header';
 import Registration from '../Form/FormRegistration/FormRegistration'
 import UserProfile from '../UserProfile/UserProfile';
 import EditUserProfile from '../UserProfile/EditUserProfile/EditUserProfile';
-import SidebarRouters from '../Sidebar/SidebarRouters';
+import SidebarRouters from './SidebarRouters';
 import Authentificate from '../Form/Authentificate/Authentificate';
 
 const HeadersRouter = () => {

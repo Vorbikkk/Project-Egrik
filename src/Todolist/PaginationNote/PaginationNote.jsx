@@ -6,7 +6,6 @@ const PaginationNote = ({ count,setNumberPagination,limit=5 }) => {
     const [countPages, setCountPages] = useState([])
     const [activePage,setActivePage]=useState(null)
 
-     console.log(limit)
 
     useEffect(() => {
         if(activePage===null){
@@ -14,7 +13,6 @@ const PaginationNote = ({ count,setNumberPagination,limit=5 }) => {
             setNumberPagination(Math.max(numberPage,1))
             setActivePage(Math.ceil(count / limit - 1))
         }
-        console.log('one')
         createPages()
     }, [count])
 

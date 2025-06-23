@@ -1,19 +1,16 @@
-.note {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid #646cff;
-    width: 100%;
-    max-height: 100px;
-    word-break: break-all; 
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 
+  .note {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
  
   
   .noteTitle {
@@ -50,3 +47,68 @@
     stroke: #ff0000;
     transform: scale(1.1);
   }
+
+
+.note:hover {
+  border-color: #bdbdbd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.note.selected {
+  border-color: #4CAF50;
+  background-color: #f8f9fa;
+}
+
+.checkbox {
+  margin-right: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox svg {
+  transition: all 0.2s ease;
+}
+
+
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #212121;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.options {
+  margin-left: 8px;
+  z-index: 1;
+}
+/* Дополнение к существующим стилям */
+.completed-note {
+  opacity: 0.8;
+}
+
+.completed-note:hover {
+  opacity: 1;
+  box-shadow: none;
+  cursor: default;
+}
+
+.noteDesc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

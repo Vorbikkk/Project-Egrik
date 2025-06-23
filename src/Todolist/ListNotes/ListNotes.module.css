@@ -1,6 +1,35 @@
-.container_notes{
-   margin: 20px auto; 
-   /* position: relative; */
-   width: 500px;
-   height: 580px;
+.ListNotes {
+    margin: 20px auto; 
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
+.containerScroll{
+    max-height:90% ;
+    overflow-y:auto ;
+}
+
+.box_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Чтобы кнопка "+" была справа */
+}
+
+.line {
+    display: block;
+    height: 1px;
+    background-color: #dadbdb;
+    margin: 10px 0 20px 0;
+}
+
+.openFormBtn {
+    border-radius: 60%;
+    padding: 0 7px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 20px;
+    background: #4CAF50; /* Пример цвета, замените на ваш */
+    border: none;
+    cursor: pointer;
+}
+

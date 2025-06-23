@@ -7,17 +7,19 @@ import { useCreateNoteMutation } from '../../RTK/Service/NoteService';
 import CalendarIcon from '../../SVGIcons/CalendarIcon';
 
 
-const ToDoForm = ({  notes, setActiveFormToDo }) => {
+const ToDoForm = ({setActiveFormToDo,noteMarkId }) => {
 
   const [nameNote, setNameNote] = useState('');
   const [description, setDescription] = useState('');
   const [activeCalendar, setActiveCalendar] = useState(false)
   const [endData, setEndData] = useState('')
   const [createNote, { }] = useCreateNoteMutation()
-  const serialNumber = notes.length >= 1 ? notes[notes.length - 1].numberNotes + 1 : 1
+  // const serialNumber = notes.length >= 1 ? notes[notes.length - 1].numberNotes + 1 : 1
   useEffect(() => {
     setActiveCalendar(false)
   }, [endData])
+
+   console.log(noteMarkId)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const ToDoForm = ({  notes, setActiveFormToDo }) => {
       note_name: nameNote,
       note_description: description,
       note_expiration_date: endData,
+      noteMarkId:noteMarkId
     }
 
     await createNote(newNote)

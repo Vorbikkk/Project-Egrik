@@ -1,0 +1,57 @@
+/* EditNote.module.css */
+
+/* Стили для иконки закрепить */
+.pin_icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #a0aec0; /* Серый цвет по умолчанию */
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.pin_icon:hover {
+  color: #718096; /* Темно-серый при наведении */
+  transform: scale(1.1);
+}
+
+.pin_icon.active {
+  color: #4299e1; /* Синий цвет для активного состояния */
+  animation: pulse 0.5s ease;
+}
+
+.pin_icon.active:hover {
+  color: #3182ce; /* Темно-синий при наведении */
+}
+
+/* Анимация пульсации при активации */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Анимация "прикола" */
+@keyframes pinAnimation {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(5deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.pin_icon:active {
+  animation: pinAnimation 0.4s ease;
+}
+
+/* Стили для контейнера поиска с иконкой */
+.search_wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.group_input {
+  padding-right: 36px; /* Оставляем место для иконки */
+}

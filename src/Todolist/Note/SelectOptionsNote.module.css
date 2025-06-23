@@ -15,6 +15,15 @@
     font-size: 20px;
 }
 
+.modalSelect{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
 .blockOpenSelect:hover {
     background-color: rgb(226, 230, 234);
 }
@@ -24,13 +33,26 @@
     width: 140px;
     padding: 5px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    position: absolute;
+    box-shadow: 0 3px 10px rgba(63, 136, 209, 0.08);
+    position: fixed;
+    z-index: 20;
     left: 15px;
     top: 25px;
 
 
 }
+.rankNotes{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(223, 220, 220);
+    padding: 5px 0;
+}
+
+li > span:hover{
+    background-color: rgba(116, 116, 202, 0.5);
+}
+
+
 .option{
     list-style: none;
     padding: 5px;

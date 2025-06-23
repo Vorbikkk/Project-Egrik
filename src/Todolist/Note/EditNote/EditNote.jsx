@@ -4,36 +4,48 @@ import MyButton from '../../../UI/MyButton/MyButton';
 import ModalDefault from '../../../Modal/ModalDefault';
 import Calendar from '../../../Calendar/Calendar'
 import { useUpdateNoteMutation } from '../../../RTK/Service/NoteService';
+import { useGetNoteMarkQuery } from '../../../RTK/Service/NoteMarkApi/NoteMarkApi';
+import GroupSelect from './GroupSelect/GroupSelect';
 import CalendarIcon from '../../../SVGIcons/CalendarIcon'
 
 const EditNoteForm = ( {note,setActiveEditModal}  ) => {
 
-   const {id,note_name,note_description,note_expiration_date,...remainderNote}=note 
-  const [noteName, setNoteName] = useState(note_name);
-  const [description, setDescription] = useState(note_description);
+   const {id,note_name,note_description,note_expiration_date,noteMarkId,...remainderNote}=note 
   const [activeCalendar,setActiveCalendar]=useState(false)
   const [date, setDate] = useState(note_expiration_date);
-  const [updateNote,]=useUpdateNoteMutation()
+   const [noteData, setNoteData] = useState({
+    name: note_name,
+    description: note_description,
+    noteMarkId: noteMarkId
+  });
+  console.log(noteMarkId)
   
+  const { data: groups } = useGetNoteMarkQuery({ page: 1, limit: 20 });
+  const [updateNote,] = useUpdateNoteMutation();
+
+  const handleUpdate = async () => {
+    await updateNote({
+      id: note.id,
+      note_name: noteData.name,
+      note_description: noteData.description,
+      note_expiration_date: noteData.date,
+      noteMarkId: noteData.noteMarkId,
+      ...remainderNote
+    })
+    .then(res=>console.log(res))
+    setActiveEditModal(false);
+  };
+  
+  if(groups){
+       console.log(groups)
+
+  }
 
   useEffect(()=>{
     setActiveCalendar(false)
   },[date])
 
-  const updateDataNote=async ()=>{
-   let newNote={
-    note_name:noteName,
-    note_description: description,
-    note_expiration_date:date,
-    ...remainderNote
 
-   }
-
-    await updateNote({id,...newNote})
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
-    setActiveEditModal(false)
-  }
 
   return (
     <div className={cl.edit_form_container}>
@@ -43,8 +55,8 @@ const EditNoteForm = ( {note,setActiveEditModal}  ) => {
         <label className={cl.input_label}>Название заметки</label>
         <input
           type="text"
-          value={noteName}
-          onChange={(e) => setNoteName(e.target.value)}
+          value={noteData.name}
+          onChange={(e) => setNoteData({...noteData,name:e.target.value})}
           className={cl.text_input}
         />
       </div>
@@ -52,13 +64,24 @@ const EditNoteForm = ( {note,setActiveEditModal}  ) => {
       <div className={cl.form_group}>
         <label className={cl.input_label}>Описание</label>
         <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={noteData.description}
+          onChange={(e) => setNoteData({...noteData,description:e.target.value})}
           className={cl.textarea_input}
           rows="4"
         />
       </div>
-      
+      {/* группы заметок */}
+        <div className={cl.form_group}>
+        <label className={cl.input_label}>Группа</label>
+       {groups &&   <GroupSelect 
+          groups={groups?.rows} 
+          initialnoteMarkId={noteMarkId}
+          onSelect={(id) => setNoteData({...noteData, noteMarkId: id})}
+        />}
+      </div>
+
+
+
       <div className={cl.form_group}>
         <label className={cl.input_label}>Дата завершения</label>
        <div className={cl.container_flex}>
@@ -76,7 +99,7 @@ const EditNoteForm = ( {note,setActiveEditModal}  ) => {
         <button className={cl.cancel_button} onClick={()=>setActiveEditModal(false)} >
           Отмена
         </button>
-        <button className={cl.save_button} onClick={()=>updateDataNote()}>
+        <button className={cl.save_button} onClick={()=>handleUpdate()}>
           Сохранить изменения
         </button>
       </div>

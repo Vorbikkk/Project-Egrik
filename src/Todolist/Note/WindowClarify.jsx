@@ -9,21 +9,21 @@ const WindowClarify = ({answer,id,setActive}) => {
  
 
    async function PositiveAnswer(){
-        if(answer==='delete'){
+        if(answer.answer==='delete'){
             await deleteNote(id)
             .then(res=>
                 console.log(res)
             )
         }
         else{
-         //тут будет про выполнено
+         answer.setter(true)
         }
         setActive(false)
     }
 
     return (
         <div className={cl.WindowClarify }>
-            <p>вы точно хотите выбрать {answer}</p>
+            <p>вы точно хотите выбрать {answer.answer}</p>
             <div className={cl.container_btn}>
                <MyButton onClick={()=>PositiveAnswer()}>Да</MyButton>
                <MyButton onClick={()=>setActive(false)}>Нет</MyButton>

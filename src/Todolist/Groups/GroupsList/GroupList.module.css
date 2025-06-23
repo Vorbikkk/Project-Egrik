@@ -1,0 +1,114 @@
+/* Контейнер списка групп */
+.groupsContainer {
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.groupsContainer:hover{
+  background-color: #8d9198;
+}
+
+
+/* Заголовок списка */
+.groupsHeader {
+  display: flex;
+  
+}
+.countGroup{
+  color: #6f7174;
+  font-size: 15px;
+}
+
+
+.groupsTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.groupsCount {
+  font-size: 14px;
+  color: #6B7280;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+/* Обертка для скролла */
+.groupsScrollWrapper {
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Кастомный скроллбар */
+.groupsScrollWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.groupsScrollWrapper::-webkit-scrollbar-track {
+  background: #F3F4F6;
+  border-radius: 2px;
+}
+
+.groupsScrollWrapper::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 2px;
+}
+
+.groupsScrollWrapper::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Стили карточки группы */
+
+
+/* Кнопка меню */
+.groupMenuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.groupMenuButton:hover {
+  background: #E5E7EB;
+}
+
+
+
+.arrowButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.arrowDown {
+  transform: rotate(0deg);
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.arrowButton svg {
+  display: block;
+}
+.Myinput{
+  border-bottom: 2px solid rgb(218, 218, 218);
+  width: 100%;
+  background-color: #f5f5f5;
+  margin-bottom:5px;
+}
+.groupList{
+  width: 90%;
+  padding: 10px;
+}
